@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirigiendo a la plataforma...</title>
+    
+    <!-- FALLBACK PARA NAVEGADORES SIN JS (Redirige en 1 segundo) -->
+    <!-- PASO 1: Pon aquí tu URL ACTUAL -->
+    <!-- PASO 2 (Futuro): Cuando migres, sustituye esta URL por la nueva -->
+    <meta http-equiv="refresh" content="1;url=https://tu-sitio-actual.com">
+
+    <style>
+        /* =========================================================
+           REGLA 60-30-10
+           60% Fondo (Color neutro/blanco para espacio limpio)
+           30% Elementos UI (Gris oscuro/Azul corporativo)
+           10% Acento (Color vibrante para el loader)
+           ========================================================= */
+        :root {
+            --color-60: #F8F9FA; /* Blanco humo - Fondo */
+            --color-30: #2C3E50; /* Azul marino oscuro - Texto */
+            --color-10: #00E5FF; /* Cian vibrante - Acento/Animación */
+            --font-main: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--color-60);
+            color: var(--color-30);
+            font-family: var(--font-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* Diseño Micro-learning: Espacios generosos */
+            padding: 2rem; 
+        }
+
+        /* UI/UX: Spinner moderno minimalista */
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(44, 62, 80, 0.1); /* Base transparente (30% color con opacidad) */
+            border-left-color: var(--color-10); /* Color de acento (10%) */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .message {
+            font-size: 1.25rem;
+            font-weight: 500;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in forwards;
+            animation-delay: 0.2s; /* Microinteracción: Retraso sutil para fluidez */
+        }
+
+        .sub-message {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in forwards;
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Interfaz de transición para evitar fatiga visual -->
+    <div class="loader"></div>
+    <h1 class="message">Preparando tu entorno de aprendizaje...</h1>
+    <p class="sub-message">Serás redirigido en un instante.</p>
+
+    <script>
+        /**
+         * LÓGICA DE REDIRECCIÓN (Interactividad de Estado Único)
+         * Usamos replace() en lugar de href() para no ensuciar el historial 
+         * de navegación del estudiante. Así, si le dan "Atrás", no vuelven aquí.
+         */
+        
+        // =========================================================
+        // ZONA DE ADMINISTRACIÓN - URL DE ENRUTAMIENTO
+        // 1. AHORA: Pon tu URL actual aquí abajo.
+        // 2. FUTURO: Cuando migres la web, simplemente cambia este valor por el nuevo URL.
+        // =========================================================
+        const URL_DESTINO = "https://tu-sitio-actual.com";
+
+        // 2. Microinteracción: Damos un pequeño delay (800ms) para que el loader
+        // se alcance a ver, dando una sensación de "carga de sistema" profesional.
+        // Si quieres que sea inmediato, cambia el 800 a 0.
+        setTimeout(() => {
+            window.location.replace(URL_DESTINO);
+        }, 800);
+    </script>
+</body>
+</html>
